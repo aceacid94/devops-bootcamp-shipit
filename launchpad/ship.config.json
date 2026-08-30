@@ -1,6 +1,6 @@
 {
-  "shipName": "Nebula Runner",
+  "shipName": "Runner",
   "color": "#22d3ee",
-  "shipModel": "Interceptor",
+  "shipModel": "scout",
   "emblem": "comet"
 }
