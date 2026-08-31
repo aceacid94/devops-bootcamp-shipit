@@ -1,6 +1,6 @@
 {
-  "shipName": "Gagak03",
-  "color": "22d3ee",
-  "shipModel": "interceptor",
+  "shipName": "Gagak01",
+  "color": "#22d3ee",
+  "shipModel": "fighter",
   "emblem": "comet"
 }
