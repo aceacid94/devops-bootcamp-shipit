@@ -5,10 +5,6 @@ on: [push, workflow_dispatch]
 defaults:
       run:
         working-directory: launchpad
-defaults:
-  run:
-    working-directory: launchpad
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,10 +15,9 @@ jobs:
       - run: npm run test
       - run: bash scripts/report.sh
         env:
-          SHIPIT_TOKEN: ${{ secrets.SHIPIT_TOKEN }}
           BOARD_URL: ${{ secrets.BOARD_URL }}
-      - run: npm test
-  
+          SHIPIT_TOKEN: ${{ secrets.SHIPIT_TOKEN }}
+          
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -31,11 +26,12 @@ jobs:
       - uses: actions/setup-node@v7
       - run: npm clean-install
       - run: npm run build
+        env:
+          VITE_BOARD_URL: ${{ vars.BOARD_URL }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: launchpad/dist
       - uses: actions/deploy-pages@v5
-
 # tambah di bawah sekali
 permissions:
   pages: write
